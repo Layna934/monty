@@ -1,4 +1,4 @@
 Project: Monty
 
 
-Authors: Joseph Omoruwou and Precious Umukoro Efe-Oghene 
+Authors: Joseph Omoruwou and Precious Umukoro Esseoghene 
