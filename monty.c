@@ -24,12 +24,14 @@ int main(int argc, char *argv[])
 	};
 
 
+	/* edge case: incorrect number of arguments */
 	if(argc != 2)
 	{
 		fprintf(stderr, "USAGE: %s file\n", argv[0]);
 		exit(EXIT_FAILURE);
 	}
 
+	/* open file and handle edge case */
 	file = fopen(argv[1], "r");
 	if (file == NULL)
 	{
@@ -50,6 +52,7 @@ int main(int argc, char *argv[])
 		execute_instructions(&stack, opcode, arg);
 		}
 	}
+
 	free(line);
 	fclose(file);
 	return (0);
