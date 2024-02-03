@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
 	FILE *file;
 	char *line = NULL;
 	size_t len = 0;
-	size_t read;
+	/*size_t read;*/
 	char *opcode;
 	char *arg;
 
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	while ((read = getline(&line, &len, file)) != 1)	/* consider using fgets */
+	while (fgets(line, len, file) != NULL)	/* consider using fgets */
 	{
 		/**
 		 * Tokenize the line to seperate opcode and argument if any 
