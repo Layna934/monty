@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 		 * Update the stack based on the executed instructions
 		 */
 		opcode = strtok(line, " \t\n");
-		arg = (strtok(line, " \t\n"));
+		arg = strtok(NULL, " \t\n");
 		
 		if (arg == NULL)
 		{
