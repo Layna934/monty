@@ -16,12 +16,6 @@ int main(int argc, char *argv[])
 	char *rest = line;
 	char *arg;
 
-	/* Array of instructions */
-	instruction_t instructions[] = {
-		{"push", handle_push},
-		{"push", handle_pall},
-		{NULL, NULL}
-	};
 
 
 	if(argc != 2)
