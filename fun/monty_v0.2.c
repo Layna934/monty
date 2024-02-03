@@ -2,6 +2,9 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <sys/types.h>
+
+ssize_t getline(char **lineptr, size_t *n, FILE *stream);
 
 /**
  * main - 
@@ -14,7 +17,7 @@ int main(int argc, char *argv[])
 	FILE *file;
 	char *line = NULL;
 	size_t len = 0;
-	/*size_t read;*/
+	ssize_t read;
 	char *opcode;
 	char *arg;
 
@@ -31,8 +34,9 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	while (fgets(line, len, file) != NULL)	/* consider using fgets */
+	while ((read = getline(&line, &len, file) != -1))	/* consider using fgets */
 	{
+		line[strcspn(line, "\n")] = '\0';
 		/**
 		 * Tokenize the line to seperate opcode and argument if any 
 		 * Parse and execute the instrustions using the instruction_t structure
@@ -50,6 +54,7 @@ int main(int argc, char *argv[])
 		execute_instructions(&stack, opcode, arg);
 	}
 
+	free(line);
 	fclose(file);
 	return (0);
 }
