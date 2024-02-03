@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	while ((read = getline(&line, &len, file)) != 1)
+	while ((read = getline(&line, &len, file)) != 1)	/* consider using fgets */
 	{
 		/**
 		 * Tokenize the line to seperate opcode and argument if any 
