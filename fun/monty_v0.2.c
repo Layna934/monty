@@ -41,11 +41,11 @@ int main(int argc, char *argv[])
 	{
 		/**
 		 * Tokenize the line to seperate opcode and argument if any 
-		 * Parse and execure the instrustions using the instruction_t structure
+		 * Parse and execute the instrustions using the instruction_t structure
 		 * Update the stack based on the executed instructions
 		 */
-		opcode = strtok_r(line, " \n", &rest);
-		arg = strtok_r(line, " \n", &rest);
+		opcode = strtok_r(line, " \t\n", &rest);
+		arg = strtok_r(line, " \t\n", &rest);
 		
 		execute_instructions(&stack, opcode, arg);
 		}
