@@ -1,4 +1,7 @@
 #include "monty.h"
+#include <string.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
  * main - 
@@ -13,10 +16,7 @@ int main(int argc, char *argv[])
 	size_t len = 0;
 	size_t read;
 	char *opcode;
-	char *rest = line;
 	char *arg;
-
-
 
 	if(argc != 2)
 	{
@@ -38,13 +38,18 @@ int main(int argc, char *argv[])
 		 * Parse and execute the instrustions using the instruction_t structure
 		 * Update the stack based on the executed instructions
 		 */
-		opcode = strtok_r(line, " \t\n", &rest);
-		arg = strtok_r(line, " \t\n", &rest);
+		opcode = strtok(line, " \t\n");
+		arg = (strtok(line, " \t\n"));
 		
-		execute_instructions(&stack, opcode, arg);
+		if (arg == NULL)
+		{
+			fprintf(stderr, "incorrect argument");
+			exit(EXIT_FAILURE);
 		}
+
+		execute_instructions(&stack, opcode, arg);
 	}
-	free(line);
+
 	fclose(file);
 	return (0);
 }

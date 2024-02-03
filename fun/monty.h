@@ -7,7 +7,6 @@
 
 #define SIZE 1000
 
-
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -24,11 +23,6 @@ typedef struct stack_s
 	struct stack_s *next;
 } stack_t;
 
-void handle_push(stack_t **stack, char *arg);
-void handle_pall(stack_t **stack, char *arg);
-char *checkStrings(char *str1, char *str2);
-void execute_instructions(stack_t **stack, char *opcode, char *arg);
-
 
 /**
  * struct instruction_s - opcode and its function
@@ -41,9 +35,14 @@ void execute_instructions(stack_t **stack, char *opcode, char *arg);
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+	void (*f)(stack_t **stack, char *arg);
 } instruction_t;
 
+void handle_push(stack_t **stack, char *arg);
+void handle_pall(stack_t **stack, char *arg);
 
+
+
+void execute_instructions(stack_t **stack, char *opcode, char *arg);
 
 #endif /** MONTY_H **/
