@@ -25,3 +25,18 @@ for (i = 0; instructions[i].opcode != NULL; i++)
 	fprintf(stderr, "Error: Unknown opcode %s\n", opcode);
 	exit(EXIT_FAILURE);
 }
+
+
+void free_linked_list(stack_t *head)
+{
+	stack_t *current = head;
+	stack_t *next_node; 
+
+	while (current != NULL)
+	{
+		next_node = current->next;
+		free(current);
+		current = next_node;
+	}
+}
+

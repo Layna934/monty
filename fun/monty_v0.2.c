@@ -45,16 +45,23 @@ int main(int argc, char *argv[])
 		opcode = strtok(line, " \t\n");
 		arg = strtok(NULL, " \t\n");
 		
-		if (arg == NULL)
+		if (opcode == NULL)
 		{
-			fprintf(stderr, "incorrect argument");
-			exit(EXIT_FAILURE);
+			continue;
 		}
 
-		execute_instructions(&stack, opcode, arg);
+		if (arg != NULL)
+		{
+			execute_instructions(&stack, opcode, arg);
+		}
+		else
+		{
+			execute_instructions(&stack, opcode, arg);
+		}
 	}
-
+	free_linked_list(stack);
 	free(line);
 	fclose(file);
+
 	return (0);
 }

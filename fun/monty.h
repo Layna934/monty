@@ -40,6 +40,7 @@ typedef struct instruction_s
 
 void handle_push(stack_t **stack, char *arg);
 void handle_pall(stack_t **stack, char *arg);
+void free_linked_list(stack_t *head);
 
 
 
